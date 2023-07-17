@@ -14,8 +14,8 @@ Resources:
   GetFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: "GETメソッド"
-      Description: "GETメソッド (Lambda on FastAPI)"
+      FunctionName: !Sub ${AWS::StackName}-get
+      Description: "GETメソッド。"
       PackageType: Image
       Events:
         HelloWorld:
@@ -29,8 +29,8 @@ Resources:
   PostFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: "POSTメソッド"
-      Description: "POSTメソッド (Lambda on FastAPI)"
+      FunctionName: !Sub ${AWS::StackName}-post
+      Description: "POSTメソッド。"
       PackageType: Image
       Events:
         HelloWorld:
@@ -44,8 +44,8 @@ Resources:
   PutFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: "PUTメソッド"
-      Description: "PUTメソッド (Lambda on FastAPI)"
+      FunctionName: !Sub ${AWS::StackName}-put
+      Description: "PUTメソッド。"
       PackageType: Image
       Events:
         HelloWorld:
@@ -59,8 +59,8 @@ Resources:
   DeleteFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: "DELETEメソッド"
-      Description: "DELETEメソッド (Lambda on FastAPI)"
+      FunctionName: !Sub ${AWS::StackName}-delete
+      Description: "DELETEメソッド。"
       PackageType: Image
       Events:
         HelloWorld:
