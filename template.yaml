@@ -15,6 +15,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: "GETメソッド"
+      Description: "GETメソッド (Lambda on FastAPI)"
       PackageType: Image
       Events:
         HelloWorld:
@@ -29,6 +30,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: "POSTメソッド"
+      Description: "POSTメソッド (Lambda on FastAPI)"
       PackageType: Image
       Events:
         HelloWorld:
@@ -43,6 +45,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: "PUTメソッド"
+      Description: "PUTメソッド (Lambda on FastAPI)"
       PackageType: Image
       Events:
         HelloWorld:
@@ -57,6 +60,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: "DELETEメソッド"
+      Description: "DELETEメソッド (Lambda on FastAPI)"
       PackageType: Image
       Events:
         HelloWorld:
