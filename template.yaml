@@ -24,3 +24,42 @@ Resources:
     Metadata:
       DockerContext: ./hello_world
       Dockerfile: Dockerfile
+  PostFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /
+            Method: POST
+    Metadata:
+      DockerContext: ./hello_world
+      Dockerfile: Dockerfile
+  PutFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /
+            Method: PUT
+    Metadata:
+      DockerContext: ./hello_world
+      Dockerfile: Dockerfile
+  DeleteFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /
+            Method: DELETE
+    Metadata:
+      DockerContext: ./hello_world
+      Dockerfile: Dockerfile
