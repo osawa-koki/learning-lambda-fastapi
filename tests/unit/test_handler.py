@@ -1,34 +1,24 @@
 from fastapi.testclient import TestClient
-from hello_world.app import app as hello_world_app
-from item.app import app as item_app
-import json
+from src.app import app
 
-hello_world_client = TestClient(hello_world_app)
-item_client = TestClient(item_app)
+testClient = TestClient(app)
 
-def test_root():
-    response = hello_world_client.get("/hello")
+def test_get():
+    response = testClient.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "Hello SAM World"}
+    assert response.json() == {"message": "Hello GET."}
 
-def test_get_item():
-    response = item_client.get("/item?id=ABC")
+def test_post():
+    response = testClient.post("/")
     assert response.status_code == 200
-    assert response.json() == {"id": "ABC", "name": "get_item+ABC","description":"get_item+ABC","price":100.0}
+    assert response.json() == {"message": "Hello POST."}
 
-def test_post_item():
-    response = item_client.post(
-        "/item",
-        json={"name": "post_item","description":"post_item","price":200.0}
-    )
-    del_id_res = response.json()
-    del del_id_res["id"]
-    assert response.status_code == 201
-    assert del_id_res =={"name": "post_item","description":"post_item","price":200.0}
+def test_put():
+    response = testClient.put("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello PUT."}
 
-def test_put_item():
-    response = item_client.put(
-        "/item/9"
-    )
-    assert response.status_code == 201
-    assert response.json() =={"id": "9", "name": "put_item+9","description":"put_item+9","price":300.0}
+def test_delete():
+    response = testClient.delete("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello DELETE."}
