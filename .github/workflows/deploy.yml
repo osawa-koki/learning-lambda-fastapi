@@ -5,9 +5,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - 'issues/11'
 
 env:
   project-name: ${{ secrets.PROJECT_NAME }}
