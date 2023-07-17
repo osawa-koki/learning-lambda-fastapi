@@ -1,9 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  sam-handson
+  learning-lambda-fastapi
 
-  Sample SAM Template for sam-handson
+  😮‍💨😮‍💨😮‍💨 LambdaでFastAPIを動かす！
 
 Globals:
   Function:
