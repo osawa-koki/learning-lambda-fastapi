@@ -1,7 +1,7 @@
 version = 0.1
 [default.deploy.parameters]
-stack_name = "simple-fastapi-on-lambda"
-s3_prefix = "simple-fastapi-on-lambda"
+stack_name = "learning-lambda-fastapi"
+s3_prefix = "learning-lambda-fastapi"
 region = "ap-northeast-1"
 capabilities = "CAPABILITY_IAM"
 resolve_s3 = true
