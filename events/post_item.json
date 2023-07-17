@@ -1,9 +1,0 @@
-{
-  "body": "{\"name\": \"post_item\",\"description\":\"post_item\",\"price\":200.0}",
-  "resource": "/",
-  "path": "/item",
-  "httpMethod": "POST",
-  "requestContext": {
-    "Dummy": "Dummy"
-  }
-}
