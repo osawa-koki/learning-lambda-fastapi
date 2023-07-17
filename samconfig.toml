@@ -1,8 +1,8 @@
 version = 0.1
 [default.deploy.parameters]
 stack_name = "simple-fastapi-on-lambda"
-resolve_s3 = true
 s3_prefix = "simple-fastapi-on-lambda"
 region = "ap-northeast-1"
 capabilities = "CAPABILITY_IAM"
-image_repositories = ["HelloWorldFunction=938385028059.dkr.ecr.ap-northeast-1.amazonaws.com/simplefastapionlambdaa74b4148/helloworldfunction19d43fc4repo", "GetItemFunction=938385028059.dkr.ecr.ap-northeast-1.amazonaws.com/simplefastapionlambdaa74b4148/getitemfunctionb066e925repo", "PostItemFunction=938385028059.dkr.ecr.ap-northeast-1.amazonaws.com/simplefastapionlambdaa74b4148/postitemfunctionaf5a115erepo", "PutItemFunction=938385028059.dkr.ecr.ap-northeast-1.amazonaws.com/simplefastapionlambdaa74b4148/putitemfunctionb19d88ffrepo"]
+resolve_s3 = true
+resolve_image_repos = true
