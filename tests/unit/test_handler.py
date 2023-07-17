@@ -1,72 +1,34 @@
+from fastapi.testclient import TestClient
+from hello_world.app import app as hello_world_app
+from item.app import app as item_app
 import json
 
-import pytest
+hello_world_client = TestClient(hello_world_app)
+item_client = TestClient(item_app)
 
-from hello_world import app
+def test_root():
+    response = hello_world_client.get("/hello")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello SAM World"}
 
+def test_get_item():
+    response = item_client.get("/item?id=ABC")
+    assert response.status_code == 200
+    assert response.json() == {"id": "ABC", "name": "get_item+ABC","description":"get_item+ABC","price":100.0}
 
-@pytest.fixture()
-def apigw_event():
-    """ Generates API GW Event"""
+def test_post_item():
+    response = item_client.post(
+        "/item",
+        json={"name": "post_item","description":"post_item","price":200.0}
+    )
+    del_id_res = response.json()
+    del del_id_res["id"]
+    assert response.status_code == 201
+    assert del_id_res =={"name": "post_item","description":"post_item","price":200.0}
 
-    return {
-        "body": '{ "test": "body"}',
-        "resource": "/{proxy+}",
-        "requestContext": {
-            "resourceId": "123456",
-            "apiId": "1234567890",
-            "resourcePath": "/{proxy+}",
-            "httpMethod": "POST",
-            "requestId": "c6af9ac6-7b61-11e6-9a41-93e8deadbeef",
-            "accountId": "123456789012",
-            "identity": {
-                "apiKey": "",
-                "userArn": "",
-                "cognitoAuthenticationType": "",
-                "caller": "",
-                "userAgent": "Custom User Agent String",
-                "user": "",
-                "cognitoIdentityPoolId": "",
-                "cognitoIdentityId": "",
-                "cognitoAuthenticationProvider": "",
-                "sourceIp": "127.0.0.1",
-                "accountId": "",
-            },
-            "stage": "prod",
-        },
-        "queryStringParameters": {"foo": "bar"},
-        "headers": {
-            "Via": "1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)",
-            "Accept-Language": "en-US,en;q=0.8",
-            "CloudFront-Is-Desktop-Viewer": "true",
-            "CloudFront-Is-SmartTV-Viewer": "false",
-            "CloudFront-Is-Mobile-Viewer": "false",
-            "X-Forwarded-For": "127.0.0.1, 127.0.0.2",
-            "CloudFront-Viewer-Country": "US",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "Upgrade-Insecure-Requests": "1",
-            "X-Forwarded-Port": "443",
-            "Host": "1234567890.execute-api.us-east-1.amazonaws.com",
-            "X-Forwarded-Proto": "https",
-            "X-Amz-Cf-Id": "aaaaaaaaaae3VYQb9jd-nvCd-de396Uhbp027Y2JvkCPNLmGJHqlaA==",
-            "CloudFront-Is-Tablet-Viewer": "false",
-            "Cache-Control": "max-age=0",
-            "User-Agent": "Custom User Agent String",
-            "CloudFront-Forwarded-Proto": "https",
-            "Accept-Encoding": "gzip, deflate, sdch",
-        },
-        "pathParameters": {"proxy": "/examplepath"},
-        "httpMethod": "POST",
-        "stageVariables": {"baz": "qux"},
-        "path": "/examplepath",
-    }
-
-
-def test_lambda_handler(apigw_event):
-
-    ret = app.lambda_handler(apigw_event, "")
-    data = json.loads(ret["body"])
-
-    assert ret["statusCode"] == 200
-    assert "message" in ret["body"]
-    assert data["message"] == "hello world"
+def test_put_item():
+    response = item_client.put(
+        "/item/9"
+    )
+    assert response.status_code == 201
+    assert response.json() =={"id": "9", "name": "put_item+9","description":"put_item+9","price":300.0}
