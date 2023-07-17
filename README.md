@@ -2,6 +2,8 @@
 
 😮‍💨😮‍💨😮‍💨 LambdaでFastAPIを動かす！  
 
+![成果物](./docs/img/fruit.gif)  
+
 ## 開発環境の構築方法
 
 最初にAWS CLIをインストールします。  
