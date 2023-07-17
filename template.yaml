@@ -14,6 +14,7 @@ Resources:
   GetFunction:
     Type: AWS::Serverless::Function
     Properties:
+      FunctionName: "GETメソッド"
       PackageType: Image
       Events:
         HelloWorld:
@@ -27,6 +28,7 @@ Resources:
   PostFunction:
     Type: AWS::Serverless::Function
     Properties:
+      FunctionName: "POSTメソッド"
       PackageType: Image
       Events:
         HelloWorld:
@@ -40,6 +42,7 @@ Resources:
   PutFunction:
     Type: AWS::Serverless::Function
     Properties:
+      FunctionName: "PUTメソッド"
       PackageType: Image
       Events:
         HelloWorld:
@@ -53,6 +56,7 @@ Resources:
   DeleteFunction:
     Type: AWS::Serverless::Function
     Properties:
+      FunctionName: "DELETEメソッド"
       PackageType: Image
       Events:
         HelloWorld:
