@@ -22,7 +22,7 @@ Resources:
             Path: /
             Method: GET
     Metadata:
-      DockerContext: ./hello_world
+      DockerContext: ./src
       Dockerfile: Dockerfile
   PostFunction:
     Type: AWS::Serverless::Function
@@ -35,7 +35,7 @@ Resources:
             Path: /
             Method: POST
     Metadata:
-      DockerContext: ./hello_world
+      DockerContext: ./src
       Dockerfile: Dockerfile
   PutFunction:
     Type: AWS::Serverless::Function
@@ -48,7 +48,7 @@ Resources:
             Path: /
             Method: PUT
     Metadata:
-      DockerContext: ./hello_world
+      DockerContext: ./src
       Dockerfile: Dockerfile
   DeleteFunction:
     Type: AWS::Serverless::Function
@@ -61,5 +61,5 @@ Resources:
             Path: /
             Method: DELETE
     Metadata:
-      DockerContext: ./hello_world
+      DockerContext: ./src
       Dockerfile: Dockerfile
